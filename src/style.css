@@ -1,0 +1,10 @@
+body {
+    background: green;
+}
+:fullscreen a {
+    display: flex
+}
+:local(.box) {
+    background: red;
+    border: 1px solid black;
+}
