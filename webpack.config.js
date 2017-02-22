@@ -53,6 +53,12 @@ var cssLoader = PRODUCTION
                     use: ['css-loader?localIndentName=' + cssIndentifier, 'postcss-loader']
                 })
                 : ['style-loader', 'css-loader?localIndentName=' + cssIndentifier, 'postcss-loader']
+var scssLoader = PRODUCTION
+                ? ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: ['css-loader?localIndentName=' + cssIndentifier, 'sass-loader', 'postcss-loader']
+                })
+                : ['style-loader', 'css-loader?localIndentName=' + cssIndentifier, 'sass-loader', 'postcss-loader']
 
 module.exports = {
     entry: entry,
@@ -68,7 +74,7 @@ module.exports = {
             use: [{
                 loader: 'babel-loader',
                 query: {
-                    presets: ['es2015', 'react', 'react-hmre', 'stage-0']
+                    presets: ['es2015', 'react', 'stage-0']
                 }
             }],
             include: APP_DIR,
@@ -82,6 +88,9 @@ module.exports = {
         }, {
             test: /\.css$/,
             use: cssLoader
+        }, {
+            test: /\.scss$/,
+            use: scssLoader
         }]
     },
     resolve:{

@@ -1,12 +1,12 @@
 import React, {Component} from 'react'
-
-import style from './style'
+import {Button} from 'antd'
 
 export default class App extends Component {
     render() {
         return (
-            <div className={style.box}>
-                Hello React123
+            <div>
+                <p>Hello React</p>
+                <Button type="primary">Primary</Button>
             </div>
         )
     }
