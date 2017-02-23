@@ -10,13 +10,23 @@ module.exports = {
     host: 'localhost',
     port: 3000,
     db: {
-        mysql: process.env.NODE_ENV === 'production' ? 'localhost:3306/node-club' : 'localhost:3306/node-club'
+        mysql: {
+            host: '127.0.0.1',
+            user: 'root',
+            password: '123456',
+            database: 'node-club',
+            port: 3306
+        }
     },
-    session_secret: '',
+    session: {
+        secret: 'node_club',
+        key: 'node_club',
+        maxAge: 2592000000
+    },
     auth_cookie_name: 'node_club',
     list_topic_count: 20,
 
-    //weibo app key
+    // weibo app key
     weibo_key: '',
     weibo_id: '',
     // admin 可删除话题，编辑标签。把 user_login_name 换成你的登录名
@@ -45,7 +55,7 @@ module.exports = {
         url: '/public/upload/'
     },
 
-    //文件大小限制
+    // 文件大小限制
     file_limit: '1MB',
     // 每个用户一天可以发的主题数
     create_post_per_day: 1000, 

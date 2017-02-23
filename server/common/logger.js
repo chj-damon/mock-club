@@ -14,6 +14,6 @@ log4js.configure({
     replaceConsole: true
 })
 const logger = log4js.getLogger('cheese')
-logger.setLevel(config.debug ? 'DEBUG' : 'ERROR')
+logger.setLevel(config.debug ? 'INFO' : 'ERROR')
 
 module.exports = logger
