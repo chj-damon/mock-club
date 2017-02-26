@@ -5,8 +5,6 @@ import compress from 'compression'
 
 import config from './config'
 import logger from './server/common/logger'
-// import requestLog from './server/middlewares/request_log'
-// import auth from './server/middlewares/auth'
 
 import routes from './server/routes'
 
@@ -17,12 +15,11 @@ config.hostname = urlInfo.hostname || config.host
 
 const app = express()
 
-// app.use(requestLog)
 app.use(express.static(staticDir))
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
-// app.use(require('cookie-parser')(config.session_secret))
+
 app.use(compress())
 
 // router
