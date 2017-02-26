@@ -3,8 +3,10 @@ import config from '../../config'
 
 const pool = mysql.createPool(config.db.mysql)
 
-const getMySqlConnection = () => (
-    pool.getConnection().disposer((connection) => {
+const getMySqlConnection = () => {
+    return pool.getConnection().disposer((connection) => {
         pool.releaseConnection(connection)
-    }) 
-)
+    })
+}
+
+module.exports = getMySqlConnection

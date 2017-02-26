@@ -1,4 +1,4 @@
-[2017-02-26 22:43:20.803] [ERROR] cheese - IncomingMessage {
+[2017-02-26 22:23:01.664] [ERROR] cheese - IncomingMessage {
   _readableState: 
    ReadableState {
      objectMode: false,
@@ -8,12 +8,12 @@
      pipes: null,
      pipesCount: 0,
      flowing: null,
-     ended: true,
+     ended: false,
      endEmitted: false,
      reading: false,
      sync: true,
      needReadable: false,
-     emittedReadable: true,
+     emittedReadable: false,
      readableListening: false,
      resumeScheduled: false,
      defaultEncoding: 'utf8',
@@ -33,7 +33,7 @@
      _hadError: false,
      _handle: 
       TCP {
-        bytesRead: 382,
+        bytesRead: 996,
         _externalStream: {},
         fd: -1,
         reading: true,
@@ -164,7 +164,7 @@
         _timer: [Object],
         _unrefed: true,
         msecs: 120000 },
-     _idleStart: 11486,
+     _idleStart: 9028,
      parser: 
       HTTPParser {
         '0': [Function: parserOnHeaders],
@@ -228,7 +228,7 @@
      _hadError: false,
      _handle: 
       TCP {
-        bytesRead: 382,
+        bytesRead: 996,
         _externalStream: {},
         fd: -1,
         reading: true,
@@ -359,7 +359,7 @@
         _timer: [Object],
         _unrefed: true,
         msecs: 120000 },
-     _idleStart: 11486,
+     _idleStart: 9028,
      parser: 
       HTTPParser {
         '0': [Function: parserOnHeaders],
@@ -420,38 +420,47 @@
   httpVersionMajor: 1,
   httpVersionMinor: 1,
   httpVersion: '1.1',
-  complete: true,
+  complete: false,
   headers: 
    { host: '127.0.0.1:3000',
      connection: 'keep-alive',
+     'content-length': '453',
+     'postman-token': 'c7be1746-1a40-10b6-2bc9-e9328074f92a',
      'cache-control': 'no-cache',
+     origin: 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
      'user-agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36',
-     'postman-token': 'e01c7c77-7030-6927-4c36-85b8671bbddc',
+     'content-type': 'multipart/form-data; boundary=----WebKitFormBoundaryBkfSEwT5TxiwdrHX',
      accept: '*/*',
-     'accept-encoding': 'gzip, deflate, sdch, br',
+     'accept-encoding': 'gzip, deflate, br',
      'accept-language': 'zh-CN,zh;q=0.8,zh-TW;q=0.6,en;q=0.4' },
   rawHeaders: 
    [ 'Host',
      '127.0.0.1:3000',
      'Connection',
      'keep-alive',
+     'Content-Length',
+     '453',
+     'Postman-Token',
+     'c7be1746-1a40-10b6-2bc9-e9328074f92a',
      'Cache-Control',
      'no-cache',
+     'Origin',
+     'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
      'User-Agent',
      'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36',
-     'Postman-Token',
-     'e01c7c77-7030-6927-4c36-85b8671bbddc',
+     'Content-Type',
+     'multipart/form-data; boundary=----WebKitFormBoundaryBkfSEwT5TxiwdrHX',
      'Accept',
      '*/*',
      'Accept-Encoding',
-     'gzip, deflate, sdch, br',
+     'gzip, deflate, br',
      'Accept-Language',
      'zh-CN,zh;q=0.8,zh-TW;q=0.6,en;q=0.4' ],
   trailers: {},
   rawTrailers: [],
   upgrade: false,
   url: '/user/add',
-  method: 'GET',
+  method: 'POST',
   statusCode: null,
   statusMessage: null,
   client: 
@@ -460,7 +469,7 @@
      _hadError: false,
      _handle: 
       TCP {
-        bytesRead: 382,
+        bytesRead: 996,
         _externalStream: {},
         fd: -1,
         reading: true,
@@ -591,7 +600,7 @@
         _timer: [Object],
         _unrefed: true,
         msecs: 120000 },
-     _idleStart: 11486,
+     _idleStart: 9028,
      parser: 
       HTTPParser {
         '0': [Function: parserOnHeaders],
@@ -720,7 +729,7 @@
         _idleTimeout: 120000,
         _idleNext: [Object],
         _idlePrev: [Object],
-        _idleStart: 11486,
+        _idleStart: 9028,
         parser: [Object],
         on: [Function: socketOnWrap],
         _paused: false,
@@ -753,7 +762,7 @@
         _idleTimeout: 120000,
         _idleNext: [Object],
         _idlePrev: [Object],
-        _idleStart: 11486,
+        _idleStart: 9028,
         parser: [Object],
         on: [Function: socketOnWrap],
         _paused: false,
@@ -773,19 +782,4 @@
      end: [Function: end],
      on: [Function: on],
      writeHead: [Function: writeHead] },
-  _parsedOriginalUrl: 
-   Url {
-     protocol: null,
-     slashes: null,
-     auth: null,
-     host: null,
-     port: null,
-     hostname: null,
-     hash: null,
-     search: null,
-     query: null,
-     pathname: '/user/add',
-     path: '/user/add',
-     href: '/user/add',
-     _raw: '/user/add' },
   body: {} }
