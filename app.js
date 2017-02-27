@@ -6,7 +6,7 @@ import compress from 'compression'
 import config from './config'
 import logger from './server/common/logger'
 
-import routes from './server/routes'
+import routes from './router'
 
 const staticDir = path.join(__dirname, 'dist')
 const urlInfo = require('url').parse(config.host)

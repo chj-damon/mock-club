@@ -2,7 +2,7 @@ const userSql = {
     insert: 
         'insert into user(id, name, loginname, password, email, url, profile_image_url, location, signature, profile, weibo, avatar, is_block, score, topic_count, reply_count, follower_count, following_count, collect_tag_count, collect_topic_count, is_star, level, is_active, create_at) values(?,?,?,?,?,?,?,?,?,?,?,?,0,0,0,0,0,0,0,0,0,1,0,now())',
     
-    modifyProfile: 
+    modify: 
         'update user set name=?, loginname=?, password=?, email=?, url=?, profile_image_url=?, location=?, signature=?, profile=?, weibo=?, avatar=? where id = ?',
     
     increaseScore: 'update user set score=score+1 where id=?',
@@ -39,13 +39,15 @@ const userSql = {
     
     levelUp: 'update user set level=level+1 where id=?',
     
-    login: 'update user set login_at=now() where id=?',
-    
-    delete: 'delete from user where id = ?',
+    loginAt: 'update user set login_at=now() where id=?',
     
     queryById: 'select * from user where id = ?',
     
-    queryAll: 'select * from user order by create_at desc'
+    queryAll: 'select * from user order by create_at desc',
+
+    userCount: 'select count(id) from user',
+
+    queryByPagination: 'select * from user order by create_at desc limit ?,?'
 }
 
 module.exports = userSql

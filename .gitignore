@@ -1,6 +1,6 @@
 node_modules
 lib
-npm-debug.log
+npm-debug.log*
 .tmp
 .idea
 build
