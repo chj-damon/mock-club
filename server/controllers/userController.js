@@ -1,8 +1,9 @@
 import userDao from '../dao/userDao'
 import uniqueId from '../common/idGenerator'
 import passwordHelper from '../common/passwordHelper'
+import jsonResult from '../common/jsonResult'
 
-exports.addUser = (req, res) => {
+exports.addUser = async (req, res) => {
     const params = {}
     params.userId = uniqueId
     params.name = req.body.name
@@ -17,10 +18,21 @@ exports.addUser = (req, res) => {
     params.weibo = req.body.weibo
     params.avatar = req.body.avatar
 
-    userDao.save(res, params)
+    try {
+        await userDao.save(params)
+        jsonResult(res, {
+            code: 200,
+            msg: '添加成功'
+        })
+    } catch (err) {
+        jsonResult(res, {
+            code: 500,
+            err
+        })  
+    }
 }
 
-exports.updateUser = (req, res) => {
+exports.updateUser = async (req, res) => {
     const params = {}
     params.userId = req.body.id
     params.name = req.body.name
@@ -34,10 +46,14 @@ exports.updateUser = (req, res) => {
     params.weibo = req.body.weibo
     params.avatar = req.body.avatar
 
-    userDao.modify(res, params)
+    userDao.modify(params)
 }
 
-exports.queryById = (req, res) => {
-    const userId = req.query.userId
-    userDao.find(res, userId)
+exports.queryById = async (req, res) => {
+    const userId = req.params.userId
+    const user = await userDao.find(userId)
+    jsonResult(res, {
+        code: 200,
+        user
+    })
 }
