@@ -5,14 +5,13 @@ var HtmlWebpackPlugin = require('html-webpack-plugin')
 var AddAssetHtmlWebpackPlugin = require('add-asset-html-webpack-plugin')
 
 var PRODUCTION = process.env.NODE_ENV === 'production' ? true : false
-var libPath = PRODUCTION ? './lib/dist/manifest.json' : './lib/debug/manifest.json'
 var BUILD_DIR = path.resolve(__dirname, './dist')
 var APP_DIR = path.resolve(__dirname, './src')
 
 var entry = PRODUCTION
-            ? `${APP_DIR}/index.js`
+            ? `${APP_DIR}/index.jsx`
             : [
-                `${APP_DIR}/index.js`,
+                `${APP_DIR}/index.jsx`,
                 'webpack-hot-middleware/client'
               ]
 var plugins = PRODUCTION
@@ -24,20 +23,20 @@ var plugins = PRODUCTION
                   new webpack.optimize.AggressiveMergingPlugin(),
                   new ExtractTextPlugin('style-[contenthash:10].css')
               ]
-              : [
+              : [    
+                  new webpack.DllReferencePlugin({
+                      context: __dirname,
+                      manifest: require('./lib/debug/manifest.json')
+                  }),
+                  new AddAssetHtmlWebpackPlugin({
+                      filepath: require.resolve('./lib/debug/lib.js'),
+                      includeSourcemap: PRODUCTION ? false : true
+                  }),
                   new webpack.HotModuleReplacementPlugin()
               ]
 plugins.push(
-    new webpack.DllReferencePlugin({
-        context: __dirname,
-        manifest: require(libPath)
-    }),
     new HtmlWebpackPlugin({
         template: 'template.html'
-    }),
-    new AddAssetHtmlWebpackPlugin({
-        filepath: PRODUCTION ? require.resolve('./lib/dist/lib.js') : require.resolve('./lib/debug/lib.js'),
-        includeSourcemap: PRODUCTION ? false : true
     }),
     new webpack.DefinePlugin({
         "process.env": {
@@ -45,6 +44,12 @@ plugins.push(
         }
     })
 )
+
+var externals = PRODUCTION ? {
+    'react': 'React',
+    'react-dom': 'ReactDOM',
+    'react-router': 'ReactRouter'
+} : {}
 
 var cssIndentifier = PRODUCTION ? '[hash:base64:10]' : '[path][name]-[local]'
 var cssLoader = PRODUCTION
@@ -68,6 +73,7 @@ module.exports = {
         publicPath: '/',
         filename: PRODUCTION ? '[name]-[hash:12].min.js' : '[name].js'
     },
+    externals: externals,
     module: {
         rules: [{
             test: /\.js$|\.jsx$/,

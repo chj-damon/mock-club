@@ -3,6 +3,9 @@ import uniqueId from '../common/idGenerator'
 import passwordHelper from '../common/passwordHelper'
 import jsonResult from '../common/jsonResult'
 
+/**
+ * insert one user data
+ */
 exports.addUser = async (req, res) => {
     const params = {}
     params.userId = uniqueId
@@ -32,6 +35,9 @@ exports.addUser = async (req, res) => {
     }
 }
 
+/**
+ * modify one user data
+ */
 exports.updateUser = async (req, res) => {
     const params = {}
     params.userId = req.body.id
@@ -46,9 +52,23 @@ exports.updateUser = async (req, res) => {
     params.weibo = req.body.weibo
     params.avatar = req.body.avatar
 
-    userDao.modify(params)
+    try {
+        await userDao.modify(params)
+        jsonResult(res, {
+            code: 200,
+            msg: '添加成功'
+        })
+    } catch (err) {
+        jsonResult(res, {
+            code: 500,
+            err
+        })  
+    }
 }
 
+/**
+ * query one user data
+ */
 exports.queryById = async (req, res) => {
     const userId = req.params.userId
     const user = await userDao.find(userId)
