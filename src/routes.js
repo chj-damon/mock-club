@@ -1,4 +1,4 @@
-import Core from './components/Core'
+import App from './components/App'
 
 function errorHandling(err) {
     throw new Error(`Dynamic page loading failed: ${err}`)
@@ -10,7 +10,7 @@ function loadRoute(cb) {
 
 export default {
     path: '/',
-    component: Core,
+    component: App,
     indexRoute: {
         getComponent(location, cb) {
             System.import('./components/Home')
@@ -22,13 +22,6 @@ export default {
         path: 'about',
         getComponent(location, cb) {
             System.import('./components/About')
-                .then(loadRoute(cb))
-                .catch(errorHandling)
-        }
-    }, {
-        path: 'users',
-        getComponent(location, cb) {
-            System.import('./components/Users')
                 .then(loadRoute(cb))
                 .catch(errorHandling)
         }

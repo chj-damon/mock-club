@@ -1,11 +1,18 @@
 import React from 'react'
 import {render} from 'react-dom'
-import App from './app'
-import Root from './root'
+import {createStore, applyMiddleware} from 'redux'
+import thunkMiddleware from 'redux-thunk'
+import {Provider} from 'react-redux'
+import {Router, hashHistory} from 'react-router'
 
-import index from './index.scss'
+import rootReducer from './reducers'
+import routes from './routes'
+
+const store = createStore(rootReducer, applyMiddleware(thunkMiddleware))
 
 render(
-    <Root />,
+    <Provider store={store}>
+        <Router history={hashHistory} routes={routes} />
+    </Provider>,
     document.getElementById('app')
 )

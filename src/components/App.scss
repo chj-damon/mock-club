@@ -1,0 +1,44 @@
+#app, .ant-layout {
+    height: 100%;
+}
+.navInner {
+    background: transparent;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+    width: 90%;
+    min-width: 960px;
+    margin: 0 auto;
+    max-width: 1400px;
+
+    input[type='text'] {
+        width: 100px;
+    }
+    .ant-menu {
+        border-right: none;
+        background-color: transparent;
+        position: relative;
+        left: 0;
+        float: right;
+        margin: 10px 0 0 0; 
+    }
+    .ant-menu-item {
+        float: left;
+        &.ant-menu-item-selected {
+            background: transparent;
+        }
+        a {
+            color: #ccc;
+            &:hover {
+                color: white;
+            }
+        }
+    }
+}
+.ant-layout-has-sider {
+    width: 90%;
+    max-width: 1400px;
+    min-width: 960px;
+    margin: 10px auto;
+    min-height: 500px;
+}
