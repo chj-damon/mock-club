@@ -1,18 +1,21 @@
 #app, .ant-layout {
     height: 100%;
 }
+%common-width {
+    width: 90%;
+    min-width: 96rem;
+    max-width: 140rem;
+}
 .navInner {
     background: transparent;
     border-radius: 0;
     border: none;
     box-shadow: none;
-    width: 90%;
-    min-width: 960px;
     margin: 0 auto;
-    max-width: 1400px;
+    @extend %common-width;
 
     input[type='text'] {
-        width: 100px;
+        width: 10rem;
     }
     .ant-menu {
         border-right: none;
@@ -20,7 +23,7 @@
         position: relative;
         left: 0;
         float: right;
-        margin: 10px 0 0 0; 
+        margin: 1rem 0 0 0; 
     }
     .ant-menu-item {
         float: left;
@@ -36,9 +39,47 @@
     }
 }
 .ant-layout-has-sider {
-    width: 90%;
-    max-width: 1400px;
-    min-width: 960px;
-    margin: 10px auto;
-    min-height: 500px;
+    @extend %common-width;
+    margin: 1rem auto;
+    min-height: 100%;
+
+    .ant-layout-sider {
+        background: transparent;
+    }
+}
+.ant-layout-footer {
+    background-color: white;
+    font-size: 1.5rem;
+}
+#footer {
+    @extend %common-width;
+    margin: 1rem auto;
+}
+.sep10 {
+    height: 1rem;
+}
+#sidebarInner {
+    .panel {
+        margin-bottom: 1rem;
+        background-color: white;
+    }
+    .header {
+        padding: 1rem;
+        font-size: 1.5rem;
+        color: #444;
+        background-color: #f6f6f6;
+        border-radius: 3px 3px 0 0;
+    }
+    .content {
+        padding: 1rem;
+
+        .friendship-community {
+            li {
+                line-height: 2rem;
+                img {
+                    width: 250px;
+                }
+            }
+        }
+    }
 }

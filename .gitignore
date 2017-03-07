@@ -4,6 +4,7 @@ npm-debug.log*
 .tmp
 .idea
 build
+dist
 compiled
 .swp
 .vscode
