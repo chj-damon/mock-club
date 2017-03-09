@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link} from 'react-router'
+import {Link, withRouter} from 'react-router'
 import {Menu, Input} from 'antd'
 
 const HeaderComponent = () =>
@@ -16,4 +16,4 @@ const HeaderComponent = () =>
         </Menu>
     </div>
 
-export default HeaderComponent
+export default withRouter(HeaderComponent)

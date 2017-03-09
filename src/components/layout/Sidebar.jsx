@@ -1,9 +1,10 @@
 import React, {Component} from 'react'
+import {withRouter} from 'react-router'
 
 import AdsPanel from '../sidebar/AdsPanel'
 import CommunityPanel from '../sidebar/CommunityPanel'
 
-export default class Sidebar extends Component {
+class Sidebar extends Component {
 
     render() {
         return (
@@ -14,3 +15,5 @@ export default class Sidebar extends Component {
         )
     }
 }
+
+export default withRouter(Sidebar)

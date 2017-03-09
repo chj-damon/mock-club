@@ -27,6 +27,7 @@
     }
     .ant-menu-item {
         float: left;
+        font-size: 1.5rem;
         &.ant-menu-item-selected {
             background: transparent;
         }
@@ -42,7 +43,9 @@
     @extend %common-width;
     margin: 1rem auto;
     min-height: 100%;
-
+    .ant-layout-content {
+        margin-right: 2rem;
+    }
     .ant-layout-sider {
         background: transparent;
     }
@@ -77,7 +80,7 @@
             li {
                 line-height: 2rem;
                 img {
-                    width: 250px;
+                    width: 25rem;
                 }
             }
         }

@@ -8,7 +8,7 @@ import {Router, hashHistory} from 'react-router'
 import rootReducer from './reducers'
 import routes from './routes'
 
-import style from './index.scss'
+import './index.scss'
 
 const store = createStore(rootReducer, applyMiddleware(thunkMiddleware))
 

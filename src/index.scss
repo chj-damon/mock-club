@@ -16,3 +16,8 @@ img {
 ol, ul {
     list-style: none;
 }
+a {
+    &:hover {
+        color: #005580;
+    }
+}
