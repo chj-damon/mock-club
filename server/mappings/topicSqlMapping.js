@@ -1,5 +1,5 @@
 const topicSql = {
-    insert: 'insert into topic(id, title, content, author_id, top, good, lock, reply_count, visit_count, collect_count, create_at) values(?,?,?,?,0,0,0,0,0,0,now())',
+    insert: 'insert into topic(id, title, content, author_id, top, good, lock, tab, reply_count, visit_count, collect_count, create_at) values(?,?,?,?,0,0,0,?,0,0,0,now())',
 
     update: 'update topic set title=?, content=? where id=?',
 
@@ -37,7 +37,11 @@ const topicSql = {
 
     queryDelete: 'select * from topic where delete=1',
 
-    queryAll: 'select * from topic'
+    queryAll: 'select * from topic ',
+
+    topicCount: 'select count(id) as topicsTotal from topic ',
+
+    queryByPagination: 'order by create_at desc limit ?, ?'
 }
 
 module.exports = topicSql

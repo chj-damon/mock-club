@@ -8,28 +8,24 @@ import {
     JOB_TOPICS
 } from './actions'
 
-const ui = (state = {}, action) => {
-    return state
-}
-
 const TOPIC_INITIAL = {
     topics: [],
     count: 0,
     page: 1,
     topic: {}
 }
-const topic = (state = TOPIC_INITIAL, action) => {
+const topicReducer = (state = TOPIC_INITIAL, action) => {
     switch (action.type) {
         case ALL_TOPICS:
             return Object.assign({}, state, {
-                topics: action.topics.rows,
-                count: action.topics.count
+                topics: 'topics' in action.result ? action.result.topics : [],
+                count: 'topicsCount' in action.result ? action.result.topicsCount[0].topicsTotal : 0
             })
         default:
             return state
     }
 }
 
-const rootReducer = combineReducers({ui, topic})
+const rootReducer = combineReducers({topicReducer})
 
 export default rootReducer

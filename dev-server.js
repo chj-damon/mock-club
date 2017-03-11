@@ -4,6 +4,7 @@ import webpackDevMiddleware from 'webpack-dev-middleware'
 import webpackHotMiddleware from 'webpack-hot-middleware'
 
 import config from './webpack.config'
+import routes from './router'
 
 const app = express()
 const compiler = webpack(config)
@@ -21,6 +22,9 @@ app.use(webpackDevMiddleware(compiler, {
     }
 }))
 app.use(webpackHotMiddleware(compiler))
+
+// routes
+app.use('/', routes)
 
 app.listen(3000, 'localhost', () => {
     console.log('dev server is running at http://localhost:3000')

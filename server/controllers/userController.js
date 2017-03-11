@@ -1,4 +1,4 @@
-import userDao from '../dao/userDao'
+import dao from '../dao/userDao'
 import uniqueId from '../common/idGenerator'
 import passwordHelper from '../common/passwordHelper'
 import jsonResult from '../common/jsonResult'
@@ -22,7 +22,7 @@ exports.addUser = async (req, res) => {
     params.avatar = req.body.avatar
 
     try {
-        await userDao.save(params)
+        await dao.save(params)
         jsonResult(res, {
             code: 200,
             msg: '添加成功'
@@ -53,7 +53,7 @@ exports.updateUser = async (req, res) => {
     params.avatar = req.body.avatar
 
     try {
-        await userDao.modify(params)
+        await dao.modify(params)
         jsonResult(res, {
             code: 200,
             msg: '添加成功'
@@ -71,7 +71,7 @@ exports.updateUser = async (req, res) => {
  */
 exports.queryById = async (req, res) => {
     const userId = req.params.userId
-    const user = await userDao.find(userId)
+    const user = await dao.find(userId)
     jsonResult(res, {
         code: 200,
         user

@@ -6,29 +6,29 @@ export const SHARE_TOPICS = 'SHARE_TOPICS'
 export const ASK_TOPICS = 'ASK_TOPICS'
 export const JOB_TOPICS = 'JOB_TOPICS'
 
-export const showAllTopics = jsonResult => ({
+export const showAllTopics = result => ({
     type: ALL_TOPICS,
-    topics: jsonResult
+    result
 })
-export const showGoodTopics = jsonResult => ({
+export const showGoodTopics = result => ({
     type: GOOD_TOPICS,
-    topics: jsonResult
+    result
 })
-export const showShareTopics = jsonResult => ({
+export const showShareTopics = result => ({
     type: SHARE_TOPICS,
-    topics: jsonResult
+    result
 })
-export const showAskTopics = jsonResult => ({
+export const showAskTopics = result => ({
     type: ASK_TOPICS,
-    topics: jsonResult
+    result
 })
-export const showJobTopics = jsonResult => ({
+export const showJobTopics = result => ({
     type: JOB_TOPICS,
-    topics: jsonResult
+    result
 })
 export const loadAllTopics = (currentPage = 1, pageSize = 40) => {
     return (dispatch) => {
-        const url = `http://localhost:3000/api/allTopics/?currentPage=${currentPage}&pagpageSize=${pageSize}`
+        const url = `http://localhost:3000/allTopics/?currentPage=${currentPage}&pageSize=${pageSize}`
         fetch(url)
             .then(response => response.json())
             .then((json) => {
@@ -41,7 +41,7 @@ export const loadAllTopics = (currentPage = 1, pageSize = 40) => {
 }
 export const loadGoodTopics = (currentPage = 1, pageSize = 40) => {
     return (dispatch) => {
-        const url = `http://localhost:3000/api/goodTopics/?currentPage=${currentPage}&pagpageSize=${pageSize}`
+        const url = `http://localhost:3000/goodTopics/?currentPage=${currentPage}&pageSize=${pageSize}`
         fetch(url)
             .then(response => response.json())
             .then((json) => {
@@ -54,7 +54,7 @@ export const loadGoodTopics = (currentPage = 1, pageSize = 40) => {
 }
 export const loadShareTopics = (currentPage = 1, pageSize = 40) => {
     return (dispatch) => {
-        const url = `http://localhost:3000/api/shareTopics/?currentPage=${currentPage}&pagpageSize=${pageSize}`
+        const url = `http://localhost:3000/shareTopics/?currentPage=${currentPage}&pageSize=${pageSize}`
         fetch(url)
             .then(response => response.json())
             .then((json) => {
@@ -67,7 +67,7 @@ export const loadShareTopics = (currentPage = 1, pageSize = 40) => {
 }
 export const loadAskTopics = (currentPage = 1, pageSize = 40) => {
     return (dispatch) => {
-        const url = `http://localhost:3000/api/askTopics/?currentPage=${currentPage}&pagpageSize=${pageSize}`
+        const url = `http://localhost:3000/askTopics/?currentPage=${currentPage}&pageSize=${pageSize}`
         fetch(url)
             .then(response => response.json())
             .then((json) => {
@@ -80,7 +80,7 @@ export const loadAskTopics = (currentPage = 1, pageSize = 40) => {
 }
 export const loadJobTopics = (currentPage = 1, pageSize = 40) => {
     return (dispatch) => {
-        const url = `http://localhost:3000/api/jobTopics/?currentPage=${currentPage}&pagpageSize=${pageSize}`
+        const url = `http://localhost:3000/jobTopics/?currentPage=${currentPage}&pageSize=${pageSize}`
         fetch(url)
             .then(response => response.json())
             .then((json) => {
