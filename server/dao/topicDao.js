@@ -6,20 +6,18 @@ module.exports = {
         let whereSql = ''
         switch (params.type) {
             case 'GOOD':
-                whereSql = 'where good=1'
+                whereSql = 'and good=1'
                 break
             case 'SHARE':
-                whereSql = "where tab='share'"
+                whereSql = "and tab='share'"
                 break
             case 'ASK':
-                whereSql = "where tab='ask'"
+                whereSql = "and tab='ask'"
                 break
             case 'JOB':
-                whereSql = "where tab='job'"
+                whereSql = "and tab='job'"
                 break
             case 'ALL':
-                whereSql = ''
-                break
             default:
                 whereSql = ''
         }
@@ -30,20 +28,18 @@ module.exports = {
         let whereSql = ''
         switch (type) {
             case 'GOOD':
-                whereSql = 'where good=1'
+                whereSql = 'and good=1'
                 break
             case 'SHARE':
-                whereSql = "where tab='share'"
+                whereSql = "and tab='share'"
                 break
             case 'ASK':
-                whereSql = "where tab='ask'"
+                whereSql = "and tab='ask'"
                 break
             case 'JOB':
-                whereSql = "where tab='job'"
+                whereSql = "and tab='job'"
                 break
             case 'ALL':
-                whereSql = ''
-                break
             default:
                 whereSql = ''
         }

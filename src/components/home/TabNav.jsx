@@ -1,14 +1,40 @@
 import React from 'react'
-import {Link, withRouter} from 'react-router'
+import {Menu} from 'antd'
 
-const TabNav = () => (
-    <div className="topic-header">
-        <Link to="/all" className="topic-tab current-tab" activeClassName="tabnav-active">全部</Link>
-        <Link to="/good" className="topic-tab" activeClassName="tabnav-active">精华</Link>
-        <Link to="/share" className="topic-tab" activeClassName="tabnav-active">分享</Link>
-        <Link to="/ask" className="topic-tab" activeClassName="tabnav-active">问答</Link>
-        <Link to="/job" className="topic-tab" activeClassName="tabnav-active">招聘</Link>
-    </div>
-)
+const TabNav = ({currentTab, changeTopic}) => {
+    let allClassName = 'topic-tab '
+    let goodClassName = 'topic-tab '
+    let shareClassName = 'topic-tab '
+    let askClassName = 'topic-tab '
+    let jobClassName = 'topic-tab '
+    switch (currentTab) {
+        case 'good':
+            goodClassName += 'tabnav-active'
+            break
+        case 'share':
+            shareClassName += 'tabnav-active'
+            break
+        case 'ask':
+            askClassName += 'tabnav-active'
+            break
+        case 'job':
+            jobClassName += 'tabnav-active'
+            break
+        case 'all':
+        default:
+            allClassName += 'tabnav-active'
+    }
+    return (
+        <div className="topic-header">
+            <Menu mode="horizontal" onClick={changeTopic}>
+                <Menu.Item key="all" className={allClassName}><span>全部</span></Menu.Item>
+                <Menu.Item key="good" className={goodClassName}><span>精华</span></Menu.Item>
+                <Menu.Item key="share" className={shareClassName}><span>分享</span></Menu.Item>
+                <Menu.Item key="ask" className={askClassName}><span>问答</span></Menu.Item>
+                <Menu.Item key="job" className={jobClassName}><span>招聘</span></Menu.Item>
+            </Menu>
+        </div>
+    )
+}
 
-export default withRouter(TabNav)
+export default TabNav

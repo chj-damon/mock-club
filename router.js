@@ -6,7 +6,7 @@ import topic from './server/controllers/topicController'
 const router = express.Router()
 
 // topic
-router.get('/allTopics', topic.allTopics)
+router.get('/fetchTopics', topic.fetchTopics)
 
 // user
 router.get('/user/find/:userId', user.queryById)

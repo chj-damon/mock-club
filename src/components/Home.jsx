@@ -6,22 +6,20 @@ import {connect} from 'react-redux'
 import TabNav from './home/TabNav'
 import TopicList from './home/TopicList'
 
-import {loadAllTopics} from '../actions'
+import {changeTopic, loadTopics} from '../actions'
 
 import './home/home.scss'
 
 class Home extends Component {
     componentWillMount() {
-        const {count, loadAllTopics} = this.props
-        if (count === 0) {
-            loadAllTopics()
-        }
+        const {loadTopics} = this.props
+        loadTopics()
     }
     render() {
         return (
             <div>
-                <TabNav />
-                <TopicList topics={this.props.topics} />
+                <TabNav currentTab={this.props.currentTab} changeTopic={this.props.changeTopic} />
+                <TopicList topics={this.props.topics} count={this.props.count} page={this.props.page} />
             </div>
         )
     }
@@ -33,9 +31,13 @@ class Home extends Component {
 const mapStateToProps = state => ({
     topics: state.topicReducer.topics,
     count: state.topicReducer.count,
-    page: state.topicReducer.page
+    page: state.topicReducer.page,
+    currentTab: state.tabReducer.currentTab
 })
-const mapDispatchToProps = dispatch => bindActionCreators({loadAllTopics}, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators({
+    changeTopic,
+    loadTopics
+}, dispatch)
 
 /**
  * mapStateToProps, mapDispatchToProps 最后的props都是在connect()包裹的这个组件中使用

@@ -1,18 +1,40 @@
+#topic-tab {
+    padding: .2rem .4rem;
+    border-radius: .3rem;
+    font-size: 1.2rem;
+}
 .topic-header {
     padding: 1rem;
-    border-radius: 3px 3px 0 0;
+    border-radius: .3rem .3rem 0 0;
     background-color: #f6f6f6;
     font-size: 1.5rem;
+
+    .ant-menu-horizontal {
+        overflow: hidden;
+        border-right: none;
+        background: transparent;
+        line-height: 25px;
+        height: 25px;
+        border-bottom: none;
+        
+        .topic-tab {
+            color: #80bd01;
+            margin: 0 1rem;
+            padding: 0 .4rem;
+            top: 0;
+            border-bottom: none;
+
+            &.tabnav-active {
+                background-color: #80bd01;
+                color: #fff;
+                border-radius: .3rem;
+            }
+        }
+    }
 }
-.topic-tab {
-    color: #80bd01;
-    margin: 0 1rem;
-}
-.current-tab {
-    background-color: #80bd01;
-    color: #fff;
-    padding: 3px 4px;
-    border-radius: 3px;
+.topic-list {
+    border-radius: 0 0 .3rem .3rem;
+    background-color: white;
 }
 .topic-line {
     position: relative;
@@ -21,7 +43,60 @@
     background: white;
     border-top: 1px solid #f0f0f0;
     overflow: hidden;
+    line-height: 2.8rem;
+
     &:nth-child(1) {
         border-top: none;
+    }
+    &.last {
+        border-bottom: 1px solid #f0f0f0;
+    }
+    .user-avatar img {
+        border-radius: .3rem;
+        width: 3rem;
+        height: 3rem;
+    }
+    .reply-count {
+        width: 7.5rem;
+        display: inline-block;
+        text-align: center;
+    }
+    .count-of-replies {
+        font-size: 1.4rem;
+        color: #9e78c0;
+    }
+    .count-of-visits {
+        font-size: 1rem;
+        color: #b4b4b4;
+    }
+    .topic-top {
+        background-color: #80bd01;
+        color: white;
+        @extend #topic-tab;
+    }
+    .topic-tab {
+        background-color: #e5e5e5;
+        color: #999;
+        @extend #topic-tab;
+    }
+    .topic-title {
+        margin-left: 1rem;
+    }
+    .last-reply {
+        text-decoration: none;
+        img {
+            height: 1.8rem;
+            width: 1.8rem;
+            vertical-align: middle;
+            margin-right: .5rem;
+            border-radius: .3rem;
+        }
+        .last-reply-time {
+            text-align: right;
+            min-width: 5rem;
+            display: inline-block;
+            white-space: nowrap;
+            font-size: 1.2rem;
+        }
     }
 }

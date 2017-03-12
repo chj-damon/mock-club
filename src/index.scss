@@ -13,6 +13,7 @@ img {
     max-width: 100%;
     vertical-align: middle;
     border: 0;
+    display: inline-block;
 }
 ol, ul {
     list-style: none;
@@ -20,7 +21,8 @@ ol, ul {
 a {
     color: #778087;
     &:hover {
-        color: #005580;
+        color: #778087;
+        text-decoration: underline;
     }
 }
 .pull-left {

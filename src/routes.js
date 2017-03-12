@@ -19,6 +19,22 @@ export default {
         }
     },
     childRoutes: [{
+        path: 'home',
+        getComponent(location, cb) {
+            System.import('./components/Home')
+                .then(loadRoute(cb))
+                .catch(errorHandling)
+        },
+        childRoutes: [{
+            path: 'topics/:tab',
+            getComponent(location, cb) {
+                System.import('./components/home/Topics')
+                    .then(loadRoute(cb))
+                    .catch(errorHandling)
+            },
+            onEnter: (_, replace) => replace('/topics/:tab')
+        }]
+    }, {
         path: 'about',
         getComponent(location, cb) {
             System.import('./components/About')

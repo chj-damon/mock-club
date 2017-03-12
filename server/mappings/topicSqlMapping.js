@@ -37,11 +37,11 @@ const topicSql = {
 
     queryDelete: 'select * from topic where delete=1',
 
-    queryAll: 'select * from topic ',
+    queryAll: 'select a.id as topic_id, a.top, a.title, a.reply_count, a.visit_count, c.id as reply_id, c.name as reply_name, c.avatar as reply_avatar, a.last_reply_at, a.tab, b.id as author_id, b.name as author_name, b.avatar as author_avatar from topic a, user b, user c where a.author_id = b.id and c.id = a.last_reply ',
 
     topicCount: 'select count(id) as topicsTotal from topic ',
 
-    queryByPagination: 'order by create_at desc limit ?, ?'
+    queryByPagination: ' order by top desc limit ?, ?'
 }
 
 module.exports = topicSql

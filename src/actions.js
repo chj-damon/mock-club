@@ -5,6 +5,7 @@ export const GOOD_TOPICS = 'GOOD_TOPICS'
 export const SHARE_TOPICS = 'SHARE_TOPICS'
 export const ASK_TOPICS = 'ASK_TOPICS'
 export const JOB_TOPICS = 'JOB_TOPICS'
+export const CURRENT_TOPIC_TAB = 'CURRENT_TOPIC_TAB'
 
 export const showAllTopics = result => ({
     type: ALL_TOPICS,
@@ -26,9 +27,9 @@ export const showJobTopics = result => ({
     type: JOB_TOPICS,
     result
 })
-export const loadAllTopics = (currentPage = 1, pageSize = 40) => {
+export const loadTopics = (type = 'ALL', currentPage = 1, pageSize = 40) => {
     return (dispatch) => {
-        const url = `http://localhost:3000/allTopics/?currentPage=${currentPage}&pageSize=${pageSize}`
+        const url = `http://localhost:3000/fetchTopics/?type=${type}&currentPage=${currentPage}&pageSize=${pageSize}`
         fetch(url)
             .then(response => response.json())
             .then((json) => {
@@ -39,55 +40,14 @@ export const loadAllTopics = (currentPage = 1, pageSize = 40) => {
             )
     }
 }
-export const loadGoodTopics = (currentPage = 1, pageSize = 40) => {
+export const triggerCurrentTopicTab = key => ({
+    type: CURRENT_TOPIC_TAB,
+    key
+})
+export const changeTopic = (currentTopic) => {
+    const type = currentTopic.key.toUpperCase() || 'ALL'
     return (dispatch) => {
-        const url = `http://localhost:3000/goodTopics/?currentPage=${currentPage}&pageSize=${pageSize}`
-        fetch(url)
-            .then(response => response.json())
-            .then((json) => {
-                dispatch(showGoodTopics(json))
-            })
-            .catch(
-                dispatch(showGoodTopics({}))
-            )
-    }
-}
-export const loadShareTopics = (currentPage = 1, pageSize = 40) => {
-    return (dispatch) => {
-        const url = `http://localhost:3000/shareTopics/?currentPage=${currentPage}&pageSize=${pageSize}`
-        fetch(url)
-            .then(response => response.json())
-            .then((json) => {
-                dispatch(showShareTopics(json))
-            })
-            .catch(
-                dispatch(showShareTopics({}))
-            )
-    }
-}
-export const loadAskTopics = (currentPage = 1, pageSize = 40) => {
-    return (dispatch) => {
-        const url = `http://localhost:3000/askTopics/?currentPage=${currentPage}&pageSize=${pageSize}`
-        fetch(url)
-            .then(response => response.json())
-            .then((json) => {
-                dispatch(showAskTopics(json))
-            })
-            .catch(
-                dispatch(showAskTopics({}))
-            )
-    }
-}
-export const loadJobTopics = (currentPage = 1, pageSize = 40) => {
-    return (dispatch) => {
-        const url = `http://localhost:3000/jobTopics/?currentPage=${currentPage}&pageSize=${pageSize}`
-        fetch(url)
-            .then(response => response.json())
-            .then((json) => {
-                dispatch(showJobTopics(json))
-            })
-            .catch(
-                dispatch(showJobTopics({}))
-            )
+        dispatch(triggerCurrentTopicTab(type.toLowerCase()))
+        dispatch(loadTopics(type))
     }
 }

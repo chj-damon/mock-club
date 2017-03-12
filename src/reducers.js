@@ -5,8 +5,23 @@ import {
     GOOD_TOPICS,
     SHARE_TOPICS,
     ASK_TOPICS,
-    JOB_TOPICS
+    JOB_TOPICS,
+    CURRENT_TOPIC_TAB
 } from './actions'
+
+const CURRENT_TAB_INITIAL = {
+    isCurrent: false
+}
+const tabReducer = (state = CURRENT_TAB_INITIAL, action) => {
+    switch (action.type) {
+        case CURRENT_TOPIC_TAB:
+            return Object.assign({}, state, {
+                currentTab: action.key
+            })
+        default:
+            return state
+    }
+}
 
 const TOPIC_INITIAL = {
     topics: [],
@@ -26,6 +41,6 @@ const topicReducer = (state = TOPIC_INITIAL, action) => {
     }
 }
 
-const rootReducer = combineReducers({topicReducer})
+const rootReducer = combineReducers({tabReducer, topicReducer})
 
 export default rootReducer

@@ -1,4 +1,4 @@
-[2017-03-11 17:30:55.554] [ERROR] cheese - { Error: ER_SP_UNDECLARED_VAR: Undeclared variable: NaN
+[2017-03-12 22:17:32.916] [ERROR] cheese - { Error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'and good=1' at line 1
     at Query.Sequence._packetToError (E:\vscode\mock-club\node_modules\.2.13.0@mysql\lib\protocol\sequences\Sequence.js:52:14)
     at Query.ErrorPacket (E:\vscode\mock-club\node_modules\.2.13.0@mysql\lib\protocol\sequences\Query.js:77:18)
     at Protocol._parsePacket (E:\vscode\mock-club\node_modules\.2.13.0@mysql\lib\protocol\Protocol.js:280:23)
@@ -26,7 +26,7 @@
     at readableAddChunk (_stream_readable.js:176:18)
     at Socket.Readable.push (_stream_readable.js:134:10)
     at TCP.onread (net.js:551:20)
-  code: 'ER_SP_UNDECLARED_VAR',
-  errno: 1327,
+  code: 'ER_PARSE_ERROR',
+  errno: 1064,
   sqlState: '42000',
   index: 0 }
