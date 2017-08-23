@@ -23,5 +23,5 @@ app.use(webpackDevMiddleware(compiler, {
 app.use(webpackHotMiddleware(compiler))
 
 app.listen(3000, 'localhost', () => {
-    console.log('dev server is running at http://localhost:8000')
+    console.log('dev server is running at http://localhost:3000')
 })
